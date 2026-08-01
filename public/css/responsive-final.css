@@ -1,10 +1,4 @@
-/*
-  Veloura final all-device responsive layer
-  - Keeps Sign in / Dashboard and Book appointment visible on tablets and phones
-  - Maintains semantic Bootstrap ul/li navigation in the off-canvas menu
-  - Prevents page-level horizontal overflow
-  - Improves product cards, forms, grids, media and portal layouts
-*/
+/* 
 
 :root{
   --veloura-quick-row-height:0px;
@@ -35,14 +29,14 @@ main,section,article,aside,header,footer,nav,
   display:none;
 }
 
-/* Desktop navigation remains one clean row. */
+Desktop navigation remains one clean row.
 @media (min-width:1200px){
   .responsive-quick-actions{
     display:none!important;
   }
 }
 
-/* Tablets and smaller laptops: keep essential actions visible below the main row. */
+Tablets and smaller laptops: keep essential actions visible below the main row.
 @media (max-width:1199.98px){
   :root{
     --veloura-quick-row-height:52px;
@@ -147,7 +141,7 @@ main,section,article,aside,header,footer,nav,
     width:100%;
   }
 
-  /* Comfortable tablet product cards. */
+  Comfortable tablet product cards.
   .product-grid,
   .shop-grid,
   .account-products{
@@ -172,7 +166,7 @@ main,section,article,aside,header,footer,nav,
   }
 }
 
-/* Standard tablets. */
+Standard tablets.
 @media (max-width:991.98px){
   .product-grid,
   .shop-grid,
@@ -219,7 +213,7 @@ main,section,article,aside,header,footer,nav,
   }
 }
 
-/* Phones and portrait tablets. */
+Phones and portrait tablets.
 @media (max-width:767.98px){
   .announcement{
     min-height:28px!important;
@@ -328,7 +322,7 @@ main,section,article,aside,header,footer,nav,
   }
 }
 
-/* Phones: one readable product card per row. */
+Phones: one readable product card per row.
 @media (max-width:575.98px){
   .nav-row.navbar{
     grid-template-columns:minmax(0,1fr) auto auto!important;
@@ -419,4 +413,4 @@ main,section,article,aside,header,footer,nav,
     padding-inline:7px;
     font-size:9px;
   }
-}
+} */
