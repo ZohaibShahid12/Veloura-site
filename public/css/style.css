@@ -953,7 +953,6 @@ button{
   }
 
   .hero-actions .btn{
-    flex:0 1 auto!important;
     width:auto!important;
     min-width:0!important;
     min-height:44px;
