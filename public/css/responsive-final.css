@@ -1,0 +1,422 @@
+/*
+  Veloura final all-device responsive layer
+  - Keeps Sign in / Dashboard and Book appointment visible on tablets and phones
+  - Maintains semantic Bootstrap ul/li navigation in the off-canvas menu
+  - Prevents page-level horizontal overflow
+  - Improves product cards, forms, grids, media and portal layouts
+*/
+
+:root{
+  --veloura-quick-row-height:0px;
+}
+
+html{
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+}
+
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden!important;
+}
+
+img,svg,video,canvas,iframe{
+  max-width:100%;
+}
+
+main,section,article,aside,header,footer,nav,
+.container,.row,[class*="grid"],[class*="layout"],[class*="shell"],[class*="panel"]{
+  min-width:0;
+}
+
+.responsive-quick-actions{
+  display:none;
+}
+
+/* Desktop navigation remains one clean row. */
+@media (min-width:1200px){
+  .responsive-quick-actions{
+    display:none!important;
+  }
+}
+
+/* Tablets and smaller laptops: keep essential actions visible below the main row. */
+@media (max-width:1199.98px){
+  :root{
+    --veloura-quick-row-height:52px;
+  }
+
+  .site-header{
+    width:100%;
+  }
+
+  .nav-row.navbar{
+    grid-template-columns:minmax(0,1fr) auto auto!important;
+    width:min(100% - 28px,1320px)!important;
+    min-height:68px!important;
+    padding:9px 0!important;
+    gap:8px!important;
+  }
+
+  .brand.navbar-brand{
+    max-width:none!important;
+    min-width:0!important;
+  }
+
+  .brand-copy{
+    min-width:0;
+  }
+
+  .menu-toggle.navbar-toggler{
+    order:2!important;
+  }
+
+  .nav-actions{
+    order:3!important;
+  }
+
+  .nav-actions .cart-link{
+    display:inline-flex!important;
+  }
+
+  .responsive-quick-actions{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);
+    align-items:center;
+    width:min(100% - 28px,1320px)!important;
+    min-height:52px;
+    padding:0 0 10px!important;
+    gap:10px;
+  }
+
+  .responsive-quick-actions a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:0;
+    min-height:40px;
+    padding:9px 14px;
+    border-radius:999px;
+    font-family:var(--sans);
+    font-size:11px;
+    line-height:1.2;
+    font-weight:800;
+    text-align:center;
+    white-space:normal;
+    text-decoration:none;
+  }
+
+  .quick-account-link{
+    color:var(--ink)!important;
+    border:1px solid var(--border);
+    background:#fff;
+  }
+
+  .quick-book-link{
+    color:#fff!important;
+    border:1px solid var(--burgundy);
+    background:var(--burgundy);
+    box-shadow:0 8px 22px rgba(104,28,50,.16);
+  }
+
+  .main-nav{
+    top:var(--veloura-header-height)!important;
+    max-height:calc(100dvh - var(--veloura-header-height))!important;
+  }
+
+  .main-nav .nav-list,
+  .main-nav .nav-item,
+  .main-nav .nav-link{
+    max-width:100%;
+  }
+
+  .main-nav .nav-list{
+    list-style:none!important;
+  }
+
+  .main-nav .nav-item{
+    margin:0!important;
+    padding:0!important;
+  }
+
+  .main-nav .nav-link{
+    display:flex!important;
+    align-items:center;
+    width:100%;
+  }
+
+  /* Comfortable tablet product cards. */
+  .product-grid,
+  .shop-grid,
+  .account-products{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:18px!important;
+  }
+
+  .product-card,
+  .service-card,
+  .expert-card,
+  .membership-card,
+  .package-card{
+    min-width:0!important;
+    max-width:100%;
+  }
+
+  .product-card h3,
+  .product-card p,
+  .product-card small,
+  .product-card b{
+    overflow-wrap:anywhere;
+  }
+}
+
+/* Standard tablets. */
+@media (max-width:991.98px){
+  .product-grid,
+  .shop-grid,
+  .account-products{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .card-grid.three,
+  .card-grid.four,
+  .expert-grid,
+  .membership-grid,
+  .location-grid,
+  .testimonial-grid,
+  .journey-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .detail-hero,
+  .product-detail,
+  .editorial-section,
+  .form-feature,
+  .gift-layout,
+  .booking-page,
+  .account-layout,
+  .staff-layout{
+    grid-template-columns:1fr!important;
+  }
+
+  .detail-copy,
+  .product-detail-copy,
+  .booking-intro,
+  .auth-panel{
+    padding-left:clamp(20px,5vw,46px)!important;
+    padding-right:clamp(20px,5vw,46px)!important;
+  }
+
+  .table-wrap,
+  .responsive-table,
+  .portal-table-wrap{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+}
+
+/* Phones and portrait tablets. */
+@media (max-width:767.98px){
+  .announcement{
+    min-height:28px!important;
+    padding:5px 12px!important;
+    font-size:8px!important;
+    line-height:1.35!important;
+    text-align:center;
+  }
+
+  .nav-row.navbar{
+    width:calc(100% - 20px)!important;
+    min-height:62px!important;
+  }
+
+  .responsive-quick-actions{
+    width:calc(100% - 20px)!important;
+    min-height:50px;
+    padding-bottom:9px!important;
+    gap:8px;
+  }
+
+  .responsive-quick-actions a{
+    min-height:39px;
+    padding:8px 10px;
+    font-size:10px;
+  }
+
+  .brand-copy b{
+    font-size:12px!important;
+    letter-spacing:.1em!important;
+  }
+
+  .brand-copy small{
+    display:none!important;
+  }
+
+  .main-nav{
+    width:100%!important;
+    border-left:0!important;
+  }
+
+  .hero,
+  .page-hero,
+  .bridal-hero,
+  .gift-hero{
+    min-width:0!important;
+    width:100%;
+  }
+
+  .hero-content,
+  .hero-actions,
+  .button-row,
+  .card-actions,
+  .success-actions,
+  .appointment-actions{
+    max-width:100%;
+  }
+
+  .hero-actions,
+  .button-row,
+  .card-actions,
+  .success-actions{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:10px!important;
+  }
+
+  .hero-actions .btn,
+  .button-row .btn,
+  .card-actions .btn,
+  .success-actions .btn{
+    flex:1 1 210px;
+    max-width:100%;
+  }
+
+  .product-card>div,
+  .service-card>div,
+  .membership-card,
+  .panel,
+  .form-card{
+    padding-left:18px!important;
+    padding-right:18px!important;
+  }
+
+  .product-card h3{
+    font-size:16px!important;
+    line-height:1.35!important;
+  }
+
+  .product-card p{
+    font-size:12px!important;
+    line-height:1.55!important;
+  }
+
+  .form-row,
+  .form-row.three,
+  .inline-form,
+  .review-booking-grid,
+  .service-facts,
+  .ticket-grid{
+    grid-template-columns:1fr!important;
+  }
+
+  input,select,textarea,.btn{
+    max-width:100%;
+  }
+}
+
+/* Phones: one readable product card per row. */
+@media (max-width:575.98px){
+  .nav-row.navbar{
+    grid-template-columns:minmax(0,1fr) auto auto!important;
+    gap:6px!important;
+  }
+
+  .brand.navbar-brand{
+    gap:7px!important;
+    max-width:calc(100vw - 120px)!important;
+  }
+
+  .brand-mark{
+    flex:0 0 32px!important;
+    width:32px!important;
+    height:32px!important;
+  }
+
+  .menu-toggle.navbar-toggler{
+    width:38px!important;
+    height:38px!important;
+  }
+
+  .nav-actions .cart-link{
+    min-height:36px!important;
+    padding:6px 8px!important;
+    font-size:9px!important;
+  }
+
+  .responsive-quick-actions{
+    grid-template-columns:1fr 1.35fr;
+  }
+
+  .product-grid,
+  .shop-grid,
+  .account-products,
+  .card-grid.three,
+  .card-grid.four,
+  .expert-grid,
+  .membership-grid,
+  .location-grid,
+  .testimonial-grid,
+  .journey-grid{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+  }
+
+  .product-card>a,
+  .product-card>.product-image,
+  .shop-grid .product-card>a,
+  .shop-grid .product-card>.product-image{
+    aspect-ratio:4/3!important;
+  }
+
+  .product-card h3{
+    font-size:17px!important;
+  }
+
+  .product-card p{
+    font-size:13px!important;
+    -webkit-line-clamp:3!important;
+  }
+
+  .product-card .btn{
+    width:100%;
+    min-height:44px;
+  }
+
+  .masonry-gallery{
+    columns:1!important;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr!important;
+  }
+
+  .footer-grid>*{
+    grid-column:auto!important;
+  }
+}
+
+@media (max-width:359.98px){
+  .brand-copy b{
+    font-size:10px!important;
+    letter-spacing:.06em!important;
+  }
+
+  .responsive-quick-actions a{
+    padding-inline:7px;
+    font-size:9px;
+  }
+}

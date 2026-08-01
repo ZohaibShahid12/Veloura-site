@@ -1,0 +1,19 @@
+{
+  "name": "veloura-luxury-salon",
+  "version": "1.2.1",
+  "private": true,
+  "description": "Full-stack luxury ladies salon website and management system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --no-warnings server.js",
+    "dev": "node --watch --no-warnings server.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "body-parser": "^2.2.1"
+  }
+}

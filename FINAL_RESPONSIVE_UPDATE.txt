@@ -1,0 +1,15 @@
+VELOURA FINAL RESPONSIVE UPDATE
+
+Mobile and tablet header now always shows:
+- Sign in / Dashboard
+- Book appointment
+- Bag
+- Hamburger navigation
+
+Primary navigation uses Bootstrap ul/li markup and opens as an off-canvas menu.
+Final media queries improve product cards, forms, grids, tables, media, and prevent page-level horizontal scrolling.
+
+Run:
+1. Open this folder in a terminal.
+2. Run: npm start
+3. Open: http://localhost:3000

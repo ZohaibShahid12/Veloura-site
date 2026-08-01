@@ -1,0 +1,29 @@
+VELOURA LUXURY SALON — WINDOWS INSTALL
+
+1. Install Node.js 22 or newer from the official Node.js website.
+2. Extract this ZIP file.
+3. Open the extracted folder.
+4. Double-click start.bat.
+5. Wait for dependencies to install on the first run.
+6. Open http://localhost:3000 in Chrome.
+
+DEMO LOGINS
+Admin:       admin@veloura.test / Admin@123
+Manager:     manager@veloura.test / Manager@123
+Reception:   reception@veloura.test / Reception@123
+Staff:       staff@veloura.test / Staff@123
+Massage:     wellness@veloura.test / Wellness@123
+Customer:    customer@veloura.test / Customer@123
+
+To reset all demo data, stop the server and delete data\veloura.sqlite.
+Start the application again to create a fresh database.
+
+DEPENDENCY REPAIR
+-----------------
+If Windows shows "Cannot find module 'body-parser'" or another MODULE_NOT_FOUND error:
+1. Close the black command window.
+2. Double-click REPAIR_WINDOWS.bat.
+3. Wait for "Repair completed successfully".
+4. Open http://localhost:3000.
+
+The repair utility deletes any incomplete node_modules installation and downloads a clean copy from the public npm registry.

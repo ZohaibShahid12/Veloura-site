@@ -1,0 +1,47 @@
+<%- include('../partials/head') %><%- include('../partials/header') %><%- include('../partials/flash') %>
+<main id="main-content">
+  <section class="page-hero shop-hero">
+    <div class="container shop-hero-inner">
+      <p class="eyebrow">THE BEAUTY SHELF</p>
+      <h1>Professional aftercare for every beauty ritual.</h1>
+      <p>Discover salon-selected haircare, skincare, makeup, nail care, wellness essentials, tools and gift edits with real-time stock.</p>
+      <div class="shop-hero-benefits"><span>✓ Expert selected</span><span>✓ Real-time inventory</span><span>✓ Salon pickup</span><span>✓ Delivery available</span></div>
+    </div>
+  </section>
+
+  <section class="shop-category-section">
+    <div class="container">
+      <div class="shop-category-grid">
+        <a href="/shop?category=Haircare"><img src="https://images.unsplash.com/photo-1522338140262-f46f5913618a?auto=format&fit=crop&w=700&q=82" alt="Haircare products"><div><small>Repair &amp; finish</small><h3>Haircare</h3></div></a>
+        <a href="/shop?category=Skincare"><img src="https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=82" alt="Skincare products"><div><small>Hydrate &amp; restore</small><h3>Skincare</h3></div></a>
+        <a href="/shop?category=Makeup"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=82" alt="Makeup products"><div><small>Prep &amp; perfect</small><h3>Makeup</h3></div></a>
+        <a href="/shop?category=Nails"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=82" alt="Nail care products"><div><small>Care &amp; colour</small><h3>Nail Care</h3></div></a>
+        <a href="/shop?category=Wellness"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=700&q=82" alt="Massage and wellness oils"><div><small>Calm &amp; renew</small><h3>Wellness</h3></div></a>
+        <a href="/shop?category=Gift Sets"><img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=82" alt="Luxury beauty gift sets"><div><small>Ready to gift</small><h3>Gift Sets</h3></div></a>
+        <a href="/shop?category=Beauty Tools"><img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=82" alt="Professional facial and beauty tools"><div><small>Massage &amp; sculpt</small><h3>Beauty Tools</h3></div></a>
+        <a href="/shop?category=Body Care"><img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=82" alt="Luxury body care products"><div><small>Polish &amp; nourish</small><h3>Body Care</h3></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shop-products-section top-tight">
+    <div class="container">
+      <div class="section-heading split shop-products-heading"><div><p class="eyebrow">SHOP ALL</p><h2>Salon care, continued at home.</h2></div><p>Filter by category or search for a specific product, brand or beauty concern.</p></div>
+      <form class="inline-filters shop-filters" method="get"><label>Search<input type="search" name="search" value="<%= filters.search %>" placeholder="Product, brand or concern"></label><label>Category<select name="category"><option value="">All categories</option><% productCategories.forEach(c=>{ %><option value="<%= c.category %>" <%= filters.category===c.category?'selected':'' %>><%= c.category %></option><% }) %></select></label><button class="btn btn-primary">Find products</button><a href="/shop" class="btn btn-soft">Reset</a></form>
+
+      <div class="product-grid shop-grid"><% products.forEach((p,index)=>{ %><article class="product-card reveal"><a href="/product/<%= p.slug %>" class="product-image"><img src="<%= p.image %>" alt="<%= p.name %>" loading="lazy"><% if(p.stock<=p.min_stock){ %><span class="stock-badge">Low stock</span><% } else if(p.rating>=4.9){ %><span class="stock-badge expert-pick-badge">Expert pick</span><% } %></a><div><small><%= p.brand %> · <%= p.category %></small><h3><a href="/product/<%= p.slug %>"><%= p.name %></a></h3><p><%= p.description %></p><div class="product-meta"><b><%= money(p.price) %></b><span>★ <%= p.rating %></span></div><form action="/cart/add" method="post"><input type="hidden" name="_csrf" value="<%= csrfToken %>"><input type="hidden" name="product_id" value="<%= p.id %>"><button class="btn btn-primary btn-block" <%= p.stock<1?'disabled':'' %>><%= p.stock<1?'Out of stock':'Add to bag' %></button></form></div></article><% }) %></div>
+      <% if(!products.length){ %><div class="empty-state"><span>◇</span><h3>No products found</h3><p>Try another category or search phrase.</p><a href="/shop" class="btn btn-primary">Clear filters</a></div><% } %>
+    </div>
+  </section>
+
+  <section class="section shop-feature-section">
+    <div class="container">
+      <div class="shop-editorial-card">
+        <div class="shop-editorial-image"><img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=1200&q=86" alt="Premium skincare consultation and beauty products" loading="lazy"></div>
+        <div class="shop-editorial-copy"><p class="eyebrow">EXPERT AFTERCARE</p><h2>Not sure what belongs in your routine?</h2><p>Book a consultation and receive a considered product plan based on your hair, skin, recent treatments and beauty goals.</p><div class="shop-editorial-list"><span>Personalised recommendations</span><span>Treatment-compatible formulas</span><span>Repeat-order convenience</span></div><a href="/book" class="btn btn-primary">Book a consultation</a></div>
+      </div>
+      <div class="shop-service-promises"><div><b>01</b><h3>Expert selected</h3><p>Products are chosen to complement professional salon services.</p></div><div><b>02</b><h3>Pickup or delivery</h3><p>Collect at your preferred branch or arrange convenient delivery.</p></div><div><b>03</b><h3>Real stock status</h3><p>Availability updates from the same connected salon inventory.</p></div><div><b>04</b><h3>Loyalty rewards</h3><p>Eligible purchases contribute to your customer loyalty balance.</p></div></div>
+    </div>
+  </section>
+</main>
+<%- include('../partials/footer') %>

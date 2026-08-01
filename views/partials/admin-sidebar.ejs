@@ -1,0 +1,19 @@
+<aside class="portal-sidebar" data-portal-sidebar>
+  <a class="brand portal-brand" href="/"><span class="brand-mark">V</span><span><b>VELOURA</b><small>MANAGEMENT</small></span></a>
+  <nav>
+    <a href="/admin" class="<%= currentPath==='/admin'?'active':'' %>"><span>⌂</span>Overview</a>
+    <a href="/admin/appointments" class="<%= currentPath.startsWith('/admin/appointments')?'active':'' %>"><span>◫</span>Appointments</a>
+    <a href="/admin/customers" class="<%= currentPath.startsWith('/admin/customers')?'active':'' %>"><span>◎</span>Customers</a>
+    <a href="/admin/staff" class="<%= currentPath.startsWith('/admin/staff')?'active':'' %>"><span>♙</span>Staff</a>
+    <a href="/admin/services" class="<%= currentPath.startsWith('/admin/services')?'active':'' %>"><span>✦</span>Services</a>
+    <a href="/admin/bridal" class="<%= currentPath.startsWith('/admin/bridal')?'active':'' %>"><span>♕</span>Bridal</a>
+    <a href="/admin/products" class="<%= currentPath.startsWith('/admin/products')?'active':'' %>"><span>◇</span>Products</a>
+    <a href="/admin/inventory" class="<%= currentPath.startsWith('/admin/inventory')?'active':'' %>"><span>▦</span>Inventory</a>
+    <a href="/admin/payments" class="<%= currentPath.startsWith('/admin/payments')?'active':'' %>"><span>₨</span>Payments</a>
+    <a href="/admin/memberships" class="<%= currentPath.startsWith('/admin/memberships')?'active':'' %>"><span>☆</span>Memberships</a>
+    <a href="/admin/branches" class="<%= currentPath.startsWith('/admin/branches')?'active':'' %>"><span>⌖</span>Branches</a>
+    <a href="/admin/reports" class="<%= currentPath.startsWith('/admin/reports')?'active':'' %>"><span>↗</span>Reports</a>
+    <% if(user.role==='admin'){ %><a href="/admin/settings" class="<%= currentPath.startsWith('/admin/settings')?'active':'' %>"><span>⚙</span>Settings</a><% } %>
+  </nav>
+  <div class="sidebar-user"><span><%= user.name.slice(0,1) %></span><div><b><%= user.name %></b><small><%= user.role %></small></div><a href="/logout">↗</a></div>
+</aside>

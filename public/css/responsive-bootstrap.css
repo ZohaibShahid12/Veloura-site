@@ -1,0 +1,583 @@
+/*
+  Veloura responsive Bootstrap layer
+  Bootstrap 5.3 is loaded locally before the original Veloura stylesheet.
+  These final overrides use Bootstrap breakpoints and preserve the luxury visual system.
+*/
+
+html,body{width:100%;max-width:100%;overflow-x:clip}
+body{min-width:320px}
+main,section,header,footer,aside,nav,form,.container,.portal-main,.portal-body{min-width:0}
+img,video,iframe,svg{max-width:100%;height:auto}
+video{display:block;width:100%}
+input,select,textarea,button{max-width:100%;min-width:0}
+textarea{overflow-wrap:anywhere}
+.table-responsive{-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.table-responsive table{width:100%;margin-bottom:0;color:inherit;background:transparent}
+.table-responsive th,.table-responsive td{white-space:nowrap;vertical-align:middle}
+.table-responsive td small,.table-responsive td b{display:block}
+.row>*{min-width:0}
+.btn{white-space:normal;text-align:center}
+.modal-card{width:min(620px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto}
+
+/* Shared card and media stability */
+.service-card,.package-card,.product-card,.membership-card,.expert-card,.location-card,.panel,.contact-card,.choice-card{min-width:0}
+.card-grid,.product-grid,.expert-grid,.membership-grid,.testimonial-grid,.location-grid,.journey-grid,.portal-grid,.account-grid,.inventory-grid,.branch-admin-grid,.bridal-admin-grid,.compact-grid{min-width:0}
+.image-wrap img,.product-image img,.product-card img,.expert-card>img,.package-card>img,.gallery-tile img{width:100%;height:100%;object-fit:cover}
+
+/* Desktop and smaller laptops */
+@media (max-width:1399.98px){
+  .container{width:min(1180px,calc(100% - 40px))}
+  .nav-row{gap:20px}
+  .main-nav{gap:16px}
+  .main-nav>a{font-size:12px}
+  .nav-actions{gap:9px}
+  .editorial-copy,.detail-copy,.product-detail-copy{padding-inline:clamp(36px,5vw,72px)}
+  .shop-editorial-copy{padding:42px}
+}
+
+@media (max-width:1199.98px){
+  .container{width:min(100% - 36px,1120px)}
+  .main-nav{gap:13px}
+  .main-nav>a{font-size:11px}
+  .nav-actions .text-link,.account-chip b{display:none}
+  .card-grid.four,.expert-grid,.membership-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .product-grid,.shop-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .gallery-mosaic,.shop-category-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .footer-grid{gap:34px}
+  .detail-columns{grid-template-columns:minmax(0,1fr) 340px;gap:42px}
+}
+
+/* Bootstrap lg breakpoint: tablet and compact laptop navigation */
+@media (max-width:991.98px){
+  body.menu-open::before{content:"";position:fixed;inset:0;background:rgba(28,14,19,.44);backdrop-filter:blur(2px);z-index:98}
+  .site-header{z-index:110}
+  .nav-row{height:72px!important;gap:12px}
+  .menu-toggle{display:grid;width:44px;height:44px;place-content:center;gap:5px;border:1px solid var(--border);border-radius:50%;background:#fff;padding:0;margin-left:auto;position:relative;z-index:121}
+  .menu-toggle span{width:21px;height:2px;background:var(--ink);transition:transform .25s,opacity .25s}
+  .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .main-nav{position:fixed;right:0;top:104px;bottom:0;width:min(390px,92vw);max-height:calc(100dvh - 104px);overflow-y:auto;overscroll-behavior:contain;background:#fff;display:flex;flex-direction:column;align-items:stretch;padding:20px 24px 36px;gap:0;transform:translateX(105%);transition:transform .3s var(--ease);box-shadow:-24px 0 55px rgba(40,20,28,.18);z-index:120}
+  .site-header.scrolled .main-nav{top:100px;max-height:calc(100dvh - 100px)}
+  .main-nav.open{transform:none}
+  .main-nav>a{font-size:14px;padding:14px 2px;border-bottom:1px solid var(--border)}
+  .main-nav>a:after{display:none}
+  .mobile-account-links{display:grid;gap:2px;margin-top:18px;padding-top:8px}
+  .mobile-account-links a{padding:12px 2px;font-weight:800;color:var(--burgundy)}
+  .nav-actions .text-link,.nav-actions .account-chip,.nav-actions .btn{display:none!important}
+  .nav-actions{margin-left:0}
+  .cart-link{display:inline-flex;min-height:44px;align-items:center}
+
+  .hero{min-height:calc(100svh - 104px);align-items:end}
+  .hero-content{padding-bottom:56px}
+  .hero-content h1{max-width:760px}
+  .hero-actions{flex-wrap:wrap}
+  .editorial-section,.detail-hero,.product-detail,.package-feature,.shop-editorial-card,.booking-page,.auth-page,.gift-layout,.form-feature,.bridal-packages{grid-template-columns:1fr}
+  .editorial-image,.detail-image,.product-detail-image,.shop-editorial-image{min-height:420px;height:auto;max-height:none}
+  .package-feature:nth-child(even) img{order:0}
+  .package-feature img{min-height:420px;max-height:560px}
+  .card-grid.four,.card-grid.three,.expert-grid,.product-grid,.membership-grid,.testimonial-grid,.location-grid,.journey-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .shop-grid,.gallery-mosaic,.shop-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .gallery-service-grid,.shop-service-promises{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .expert-profile-card{grid-template-columns:280px minmax(0,1fr)}
+  .detail-columns{grid-template-columns:1fr;gap:30px}
+  .sticky-card,.checkout-card{position:static}
+  .listing-layout{grid-template-columns:230px minmax(0,1fr);gap:24px}
+  .booking-intro{padding:70px 38px}
+  .booking-shell{padding:45px 34px}
+  .portal-sidebar{transform:translateX(-105%);z-index:130}
+  .portal-sidebar.open{transform:none}
+  .portal-main{margin-left:0;width:100%}
+  .portal-body{padding:22px 20px}
+  .portal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portal-grid .span-3{grid-column:1/-1}
+  .kpi-grid.five{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .footer-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .footer-grid>div:first-child,.footer-grid>div:last-child{grid-column:1/-1}
+}
+
+/* Bootstrap md breakpoint: tablets and large phones */
+@media (max-width:767.98px){
+  .container{width:min(100% - 28px,720px)}
+  .section{padding:68px 0}
+  .announcement{height:30px;padding-inline:12px;text-align:center;font-size:9px;line-height:1.3}
+  .announcement-hide{display:none}
+  .nav-row{height:66px!important}
+  .main-nav,.site-header.scrolled .main-nav{top:96px;max-height:calc(100dvh - 96px)}
+  .brand b{font-size:13px}.brand small{letter-spacing:.2em}.brand-mark{width:34px;height:34px}
+  .hero{min-height:680px}
+  .hero-image{background-position:58% center}
+  .hero-overlay{background:linear-gradient(90deg,rgba(26,12,17,.84),rgba(32,15,20,.5) 72%,rgba(32,15,20,.25)),linear-gradient(0deg,rgba(25,12,16,.78),transparent 60%)}
+  .hero-content{padding-bottom:44px}
+  .hero-content h1{font-size:clamp(44px,12vw,62px)}
+  .hero-content>p:not(.eyebrow),.lead{font-size:15px}
+  .hero-actions{margin:26px 0 34px;gap:10px}
+  .hero-actions .btn{flex:1 1 210px}
+  .hero-meta{gap:14px 22px;flex-wrap:wrap}
+  .hero-meta span{flex:1 1 170px}
+  .page-hero{padding:70px 0 58px}.page-hero h1{font-size:clamp(42px,11vw,58px)}
+  .section-heading.split{align-items:flex-start;flex-direction:column;gap:14px}
+  .editorial-image,.detail-image,.product-detail-image{min-height:360px;height:auto}
+  .editorial-copy,.detail-copy,.product-detail-copy,.package-feature>div{padding:46px 24px}
+  .editorial-copy h2,.package-feature h2{font-size:clamp(38px,9vw,50px)}
+  .card-grid.four,.card-grid.three,.expert-grid,.product-grid,.membership-grid,.testimonial-grid,.location-grid,.journey-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .service-card>div,.package-card>div{padding:18px}
+  .image-wrap{height:auto;aspect-ratio:4/3}
+  .expert-card{height:auto;aspect-ratio:4/5}
+  .listing-layout{grid-template-columns:1fr}
+  .filter-panel{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:500;max-height:84dvh;overflow-y:auto;border-radius:24px 24px 0 0;transform:translateY(105%);transition:transform .3s;padding:24px}
+  .filter-panel.open{transform:none}.filter-toggle{display:inline-flex}
+  .results-bar{gap:12px;align-items:flex-start;flex-wrap:wrap}
+  .expert-profile-card{grid-template-columns:1fr}.expert-photo{min-height:420px}
+  .expert-profile-card>div:last-child{padding:30px 24px}
+  .expert-stats{gap:20px;flex-wrap:wrap}
+  .service-facts{grid-template-columns:1fr 1fr}
+  .custom-builder{padding:34px 24px;flex-direction:column;align-items:flex-start}
+  .membership-card.featured{transform:none}
+  .benefit-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bridal-hero{height:690px}.bridal-copy{width:min(100% - 28px,720px);padding-top:120px}.bridal-copy h1{font-size:clamp(46px,12vw,62px)}
+  .form-row,.form-row.three,.choice-grid.two,.review-booking-grid,.gift-layout,.cart-layout{grid-template-columns:1fr}
+  .booking-intro{padding:56px 24px}.booking-intro h1{font-size:clamp(42px,10vw,54px)}
+  .booking-shell{padding:30px 18px}
+  .booking-progress{overflow-x:auto;justify-content:flex-start;padding-bottom:8px;scrollbar-width:thin}
+  .booking-progress button{flex:0 0 88px;min-width:88px;font-size:10px}
+  .booking-progress button span{font-size:10px}
+  .booking-step h2{font-size:clamp(34px,9vw,43px)}
+  .service-choice{grid-template-columns:72px minmax(0,1fr) 28px}.service-choice img{width:72px;height:72px}
+  .time-slots{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .step-actions{gap:10px;flex-wrap:wrap}.step-actions .btn{flex:1 1 150px}
+  .cart-item{grid-template-columns:90px minmax(0,1fr);gap:14px}.cart-item img{width:90px;height:100px}.cart-item>b{grid-column:2}
+  .auth-visual{min-height:340px;padding:38px 24px}.auth-panel{padding:72px 24px 42px}
+  .account-layout{grid-template-columns:1fr}.account-sidebar{position:static;overflow-x:auto}.account-sidebar nav{display:flex;min-width:max-content}.account-sidebar nav a{white-space:nowrap}
+  .account-grid,.portal-grid,.inventory-grid,.branch-admin-grid,.bridal-admin-grid,.compact-grid{grid-template-columns:1fr}
+  .account-grid .span-2,.portal-grid .span-2,.portal-grid .span-3{grid-column:auto}
+  .kpi-grid.four,.kpi-grid.five,.kpi-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portal-topbar{padding:0 14px;gap:8px}.portal-topbar h1{font-size:18px}.topbar-actions .btn{display:none}
+  .portal-body{padding:16px 12px}
+  .toolbar,.merge-panel,.customer-banner{align-items:stretch;flex-direction:column}
+  .search-box{max-width:none;width:100%}
+  .inline-form{display:grid;grid-template-columns:1fr 1fr}.inline-form .btn{grid-column:1/-1}
+  .table-responsive{margin-inline:-2px;border-radius:12px}
+  .table-responsive table{min-width:720px}
+  .panel{padding:20px}
+  .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+  .footer-grid>div:first-child,.footer-grid>div:last-child{grid-column:1/-1}
+  .footer-bottom{justify-content:center!important;text-align:center;gap:6px 16px}
+}
+
+/* Bootstrap sm breakpoint: phones */
+@media (max-width:575.98px){
+  body{font-size:14px}
+  .container{width:calc(100% - 22px);padding-left:0;padding-right:0}
+  .section{padding:58px 0}
+  .brand small{display:none}
+  .nav-actions{gap:5px}.cart-link{font-size:11px}
+  .main-nav,.site-header.scrolled .main-nav{width:100%;top:96px;max-height:calc(100dvh - 96px);padding-inline:20px}
+  .hero{min-height:640px}
+  .hero-content h1{font-size:clamp(42px,13vw,54px)}
+  .hero-actions{display:grid;grid-template-columns:1fr;width:100%}
+  .hero-actions .btn{width:100%}
+  .hero-meta span{flex-basis:100%}
+  .page-hero{padding:58px 0 48px}.page-hero p:last-child{font-size:15px}
+  .card-grid.four,.card-grid.three,.product-grid,.expert-grid,.membership-grid,.testimonial-grid,.location-grid,.journey-grid{grid-template-columns:1fr}
+  .shop-grid,.gallery-mosaic,.shop-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .gallery-service-grid,.shop-service-promises{grid-template-columns:1fr}
+  .shop-grid .product-card>div{padding:13px}
+  .shop-grid .product-card h3{font-size:14px;min-height:38px}
+  .shop-grid .product-card p{font-size:11px;min-height:48px}
+  .shop-grid .btn{font-size:10px;padding:11px 7px}
+  .shop-category-grid>a,.gallery-mosaic .gallery-tile{aspect-ratio:1/1!important}
+  .editorial-image,.detail-image,.product-detail-image,.shop-editorial-image{min-height:300px}
+  .detail-copy h1,.product-detail-copy h1{font-size:clamp(42px,11vw,52px)}
+  .service-facts{grid-template-columns:1fr}
+  .package-feature img{min-height:300px}
+  .package-feature>div{padding:32px 20px}
+  .benefit-strip{grid-template-columns:1fr}.benefit-strip>div{border-right:0;border-bottom:1px solid var(--border)}
+  .bridal-hero{height:630px}.bridal-copy{padding-top:105px}.bridal-copy h1{font-size:clamp(42px,12vw,54px)}
+  .masonry-gallery{columns:1}
+  .booking-intro{padding:46px 20px}.booking-shell{padding:25px 14px}
+  .booking-progress{margin-inline:-4px}.booking-progress button{flex-basis:76px;min-width:76px}
+  .service-choice{grid-template-columns:62px minmax(0,1fr) 25px;padding:10px}.service-choice img{width:62px;height:68px}
+  .selection-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.selection-summary span{text-align:center}
+  .time-slots{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .auth-panel{padding-inline:18px}.auth-card{padding:24px 18px}
+  .success-card,.ticket-grid{grid-template-columns:1fr}
+  .cart-item{grid-template-columns:76px minmax(0,1fr)}.cart-item img{width:76px;height:86px}
+  .kpi-grid.four,.kpi-grid.five,.kpi-grid.three{grid-template-columns:1fr}
+  .customer-totals{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin-left:0}
+  .inline-form{grid-template-columns:1fr}.inline-form .btn{grid-column:auto}
+  .table-responsive table{min-width:650px}
+  .panel-head{align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .activity-list>div{grid-template-columns:34px minmax(0,1fr)}.activity-list time{grid-column:2;text-align:left}
+  .footer-grid{grid-template-columns:1fr}.footer-grid>div{grid-column:auto!important}
+  .button-row,.card-actions,.success-actions{align-items:stretch}.button-row .btn,.success-actions .btn{flex:1 1 100%}
+  .toast{left:10px;right:10px;bottom:10px;max-width:none}
+}
+
+@media (max-width:389.98px){
+  .shop-grid,.gallery-mosaic,.shop-category-grid{grid-template-columns:1fr!important}
+  .shop-category-grid>a,.gallery-mosaic .gallery-tile,.shop-grid .product-card>a,.shop-grid .product-image{aspect-ratio:4/3!important}
+  .selection-summary{grid-template-columns:1fr}
+  .time-slots{grid-template-columns:1fr 1fr}
+  .brand-mark{width:32px;height:32px}.brand b{font-size:12px;letter-spacing:.13em}
+  .menu-toggle{width:40px;height:40px}
+}
+
+@media (hover:none){
+  .btn:hover,.service-card:hover,.package-card:hover,.gallery-service-grid>a:hover{transform:none;box-shadow:none}
+}
+
+/* Keep all five booking steps visible without clipping on phones. */
+@media (max-width:575.98px){
+  .booking-progress{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));overflow:visible;gap:2px;padding-bottom:0}
+  .booking-progress:before{left:10%;right:10%}
+  .booking-progress button{min-width:0!important;flex:none!important;width:100%;padding:0 1px;font-size:8px;line-height:1.25;gap:4px}
+  .booking-progress button span{width:30px;height:30px;font-size:9px}
+}
+
+/* =====================================================================
+   FINAL ALL-DEVICE HORIZONTAL-OVERFLOW FIX
+   Bootstrap breakpoints + mobile-first wrapping. This block intentionally
+   loads last so no page can slide sideways on phones, tablets or desktop.
+   ===================================================================== */
+html{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden!important;
+  overscroll-behavior-x:none;
+}
+body{
+  width:100%;
+  max-width:100%;
+  min-width:0!important;
+  overflow-x:hidden!important;
+  overscroll-behavior-x:none;
+  position:relative;
+}
+body>*{
+  max-width:100%;
+}
+.site-header,
+.announcement,
+main,
+footer,
+.hero,
+.page-hero,
+.section,
+.membership-band,
+.editorial-section,
+.bridal-hero,
+.auth-page,
+.booking-page,
+.portal-shell,
+.account-page{
+  width:100%;
+  max-width:100%;
+}
+main,.site-header,footer{
+  overflow-x:hidden;
+}
+.container,
+.container-fluid,
+.nav-row,
+.hero-content,
+.section-heading,
+.editorial-copy,
+.service-film-shell,
+.service-film-player,
+.service-film-copy,
+.booking-shell,
+.booking-step,
+.account-layout,
+.account-content,
+.portal-main,
+.portal-body,
+.panel,
+.modal-card{
+  min-width:0!important;
+  max-width:100%;
+}
+
+/* Long text, links and values may wrap instead of expanding the viewport. */
+h1,h2,h3,h4,h5,h6,p,a,span,b,strong,small,label,td,th{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+pre,code{
+  max-width:100%;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+/* Responsive media is always contained by its parent. */
+img,picture,video,iframe,canvas,svg{
+  max-width:100%!important;
+}
+video,iframe,canvas{
+  width:100%!important;
+}
+
+/* All custom grids are prevented from forcing intrinsic widths. */
+.card-grid,
+.product-grid,
+.shop-grid,
+.expert-grid,
+.membership-grid,
+.testimonial-grid,
+.location-grid,
+.journey-grid,
+.gallery-mosaic,
+.gallery-service-grid,
+.shop-category-grid,
+.shop-service-promises,
+.portal-grid,
+.account-grid,
+.kpi-grid,
+.inventory-grid,
+.branch-admin-grid,
+.bridal-admin-grid,
+.compact-grid,
+.form-row,
+.choice-grid,
+.review-booking-grid,
+.ticket-grid,
+.success-card{
+  width:100%;
+  max-width:100%;
+}
+.card-grid>*,
+.product-grid>*,
+.shop-grid>*,
+.expert-grid>*,
+.membership-grid>*,
+.testimonial-grid>*,
+.location-grid>*,
+.journey-grid>*,
+.gallery-mosaic>*,
+.portal-grid>*,
+.account-grid>*,
+.kpi-grid>*,
+.form-row>*,
+.choice-grid>*{
+  min-width:0!important;
+  max-width:100%;
+}
+
+/* Off-canvas menus must not increase the page scroll width while closed. */
+@media (max-width:991.98px){
+  .main-nav{
+    right:0!important;
+    left:auto!important;
+    width:min(390px,100%)!important;
+    max-width:100%!important;
+    box-sizing:border-box;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translate3d(100%,0,0)!important;
+    will-change:transform;
+  }
+  .main-nav.open{
+    visibility:visible;
+    pointer-events:auto;
+    transform:translate3d(0,0,0)!important;
+  }
+  .portal-sidebar{
+    max-width:min(290px,88vw)!important;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translate3d(-105%,0,0)!important;
+  }
+  .portal-sidebar.open{
+    visibility:visible;
+    pointer-events:auto;
+    transform:translate3d(0,0,0)!important;
+  }
+  .service-film-shell,
+  .detail-film,
+  .editorial-section,
+  .product-detail,
+  .package-feature,
+  .shop-editorial-card,
+  .form-feature{
+    width:100%;
+    max-width:100%;
+  }
+  .service-film-player,
+  .service-film-player video{
+    width:100%!important;
+    max-width:100%!important;
+  }
+}
+
+/* Tablets and phones: remove horizontal "slider" behavior and wrap controls. */
+@media (max-width:767.98px){
+  .container{
+    max-width:100%!important;
+  }
+  .announcement{
+    gap:8px!important;
+    padding:6px 12px!important;
+    height:auto!important;
+    min-height:30px;
+    white-space:normal;
+  }
+  .nav-row{
+    width:100%;
+    max-width:100%;
+  }
+  .brand{
+    min-width:0!important;
+    max-width:calc(100% - 105px);
+  }
+  .brand>span:last-child{
+    min-width:0;
+  }
+  .brand b,.brand small{
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .nav-actions{
+    flex:0 0 auto;
+    min-width:0;
+  }
+
+  /* Booking steps now fit as a real responsive Bootstrap-style grid. */
+  .booking-progress{
+    display:grid!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    width:100%!important;
+    max-width:100%!important;
+    overflow:visible!important;
+    gap:2px!important;
+    padding:0!important;
+    margin-inline:0!important;
+  }
+  .booking-progress:before{
+    left:10%!important;
+    right:10%!important;
+  }
+  .booking-progress button{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    flex:none!important;
+    padding-inline:1px!important;
+  }
+
+  /* Account navigation wraps instead of becoming a sideways slideshow. */
+  .account-sidebar{
+    width:100%;
+    max-width:100%;
+    overflow:visible!important;
+  }
+  .account-sidebar nav{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    min-width:0!important;
+    width:100%;
+    max-width:100%;
+    gap:6px;
+  }
+  .account-sidebar nav a{
+    min-width:0;
+    white-space:normal!important;
+    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Admin charts scale inside the card instead of scrolling the page. */
+  .chart{
+    width:100%;
+    max-width:100%;
+    display:grid!important;
+    grid-template-columns:repeat(auto-fit,minmax(16px,1fr));
+    align-items:end;
+    gap:4px!important;
+    overflow:hidden!important;
+  }
+  .chart-bar{
+    min-width:0!important;
+    width:100%;
+  }
+  .chart-bar i{
+    width:min(18px,100%)!important;
+  }
+
+  .gift-preview,.gift-result,.mini-team,.hero-meta,.membership-inner,
+  .membership-benefits,.button-row,.card-actions,.success-actions{
+    max-width:100%;
+    flex-wrap:wrap;
+  }
+  .gift-result{
+    min-width:0!important;
+  }
+  .service-film-copy,
+  .detail-film>div{
+    min-width:0;
+  }
+  .film-tab{
+    grid-template-columns:34px minmax(0,1fr)!important;
+  }
+  .film-tab b{
+    min-width:0;
+    white-space:normal;
+  }
+
+  /* Tables can scroll only inside their own card; the page itself never slides. */
+  .table-wrap,.table-responsive{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto!important;
+    overflow-y:hidden;
+    overscroll-behavior-x:contain;
+    touch-action:pan-x;
+  }
+}
+
+@media (max-width:575.98px){
+  .main-nav,.site-header.scrolled .main-nav{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .account-sidebar nav{
+    grid-template-columns:1fr 1fr;
+  }
+  .service-film-player,
+  .service-film-player video{
+    min-height:220px!important;
+    height:220px!important;
+  }
+  .service-film-copy{
+    padding:28px 18px!important;
+  }
+  .service-film-copy h2{
+    font-size:clamp(32px,10vw,39px)!important;
+  }
+  .hero-content,.bridal-copy,.auth-visual,.booking-intro,.booking-shell{
+    max-width:100%;
+  }
+  .modal{
+    padding:10px!important;
+  }
+  .modal-card{
+    width:100%!important;
+    max-width:100%!important;
+    padding:24px 18px!important;
+  }
+}
+
+@media (max-width:359.98px){
+  .account-sidebar nav{
+    grid-template-columns:1fr;
+  }
+  .brand b{
+    font-size:11px!important;
+    letter-spacing:.09em!important;
+  }
+  .booking-progress button span{
+    width:27px!important;
+    height:27px!important;
+  }
+}
