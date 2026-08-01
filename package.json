@@ -9,7 +9,7 @@
     "dev": "node --watch --no-warnings server.js"
   },
   "engines": {
-    "node": ">=22.5.0"
+    "node": "22.x"
   },
   "dependencies": {
     "ejs": "^3.1.10",

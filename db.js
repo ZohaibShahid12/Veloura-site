@@ -1,12 +1,28 @@
 const path = require('path');
+const os = require('os');
 const fs = require('fs');
 const crypto = require('crypto');
 const { DatabaseSync } = require('node:sqlite');
 
-const dataDir = path.join(__dirname, 'data');
+// Vercel Functions can only write to the temporary directory.
+// Locally, the original project data directory is used as before.
+const isVercel = Boolean(process.env.VERCEL);
+const bundledDbPath = path.join(__dirname, 'data', 'veloura.sqlite');
+const dataDir = isVercel
+  ? path.join(os.tmpdir(), 'veloura')
+  : path.join(__dirname, 'data');
+
 fs.mkdirSync(dataDir, { recursive: true });
-const db = new DatabaseSync(path.join(dataDir, 'veloura.sqlite'));
-db.exec('PRAGMA foreign_keys = ON; PRAGMA journal_mode = WAL; PRAGMA busy_timeout = 5000;');
+const dbPath = path.join(dataDir, 'veloura.sqlite');
+
+// Start each Vercel function instance with the bundled demo database.
+if (isVercel && !fs.existsSync(dbPath) && fs.existsSync(bundledDbPath)) {
+  fs.copyFileSync(bundledDbPath, dbPath);
+}
+
+const db = new DatabaseSync(dbPath);
+// WAL creates extra files and is not suitable for Vercel's temporary filesystem.
+db.exec('PRAGMA foreign_keys = ON; PRAGMA journal_mode = DELETE; PRAGMA busy_timeout = 5000;');
 
 function now() { return new Date().toISOString(); }
 function hashPassword(password) {

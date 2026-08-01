@@ -8,6 +8,19 @@ const PORT = Number(process.env.PORT || 3000);
 const APP_NAME = process.env.APP_NAME || 'Veloura Salon';
 const BUILD_VERSION = 'v9.0.0-responsive-bootstrap';
 
+// Safe defaults are available even when a request fails before the DB middleware.
+app.locals.appName = APP_NAME;
+app.locals.buildVersion = BUILD_VERSION;
+app.locals.currentPath = '/';
+app.locals.user = null;
+app.locals.customer = null;
+app.locals.cartCount = 0;
+app.locals.categories = [];
+app.locals.csrfToken = '';
+app.locals.success = '';
+app.locals.error = '';
+app.set('trust proxy', 1);
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view cache', false);
@@ -387,4 +400,12 @@ app.get('/health',(req,res)=>res.json({status:'ok',app:APP_NAME,time:now()}));
 app.use((req,res)=>res.status(404).render('public/message',{title:'Page not found',message:'The page you requested does not exist.',type:'error'}));
 app.use((err,req,res,next)=>{console.error(err);res.status(500).render('public/message',{title:'Something went wrong',message:'The request could not be completed. Please try again.',type:'error'});});
 
-app.listen(PORT,()=>console.log(`\n${APP_NAME} is running at http://localhost:${PORT}\n`));
+// Vercel imports the Express application as a serverless function.
+// A normal listener is kept for local development and traditional Node hosting.
+if (!process.env.VERCEL) {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`${APP_NAME} is running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;

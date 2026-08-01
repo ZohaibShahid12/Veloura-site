@@ -1,0 +1,20 @@
+VELOURA — VERCEL DEPLOYMENT
+
+1. Replace/upload all files from this project to your GitHub repository.
+2. Commit and push:
+   git add .
+   git commit -m "Prepare Veloura for Vercel"
+   git push
+3. In Vercel use Framework Preset: Other and leave Build/Output fields blank.
+4. Environment variables:
+   APP_NAME=Veloura Salon
+   APP_URL=https://YOUR-PROJECT.vercel.app
+   NODE_ENV=production
+   SESSION_DAYS=7
+5. Redeploy after saving the environment variables.
+
+IMPORTANT:
+The app uses SQLite in Vercel's temporary /tmp directory. It is suitable for a
+portfolio/demo deployment, but new users, bookings, sessions and orders are not
+guaranteed to persist between cold starts or across function instances.
+For permanent live data, migrate to a hosted PostgreSQL/MySQL database.
